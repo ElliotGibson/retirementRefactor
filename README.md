@@ -1,5 +1,8 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is a very ugly refactor for: [u/Ghox](https://www.reddit.com/user/Ghox/) - it'll get updated tomorrow when I have some free time :)
+The fixes attempt to fix the issues from the initial implementation:  [reddit/helpme](https://www.reddit.com/r/nextjs/comments/ua00sj/help_me_add_state_to_my_calculator_component)
 
+Feel free to use the code and ask questions - open issues etc... for questions - I haven't fully commented everything yet, although I've
+tried to make the code as self documenting as feasible :)
 ## Getting Started
 
 First, run the development server:
