@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
-
-import { calculatorDefaultState } from 'global/constants';
+import Link from 'next/link';
 import { setStateToStorage } from 'global/utils';
 
 import { 
@@ -10,18 +9,19 @@ import {
     formatter
 } from 'global/helpers';
 
-import Input from 'components/Atoms/Input';
+import Input from 'components/atoms/Input';
+import Seo from 'components/atoms/Seo'
 
 function RetirementCalculator(){
 
     //We don't want to fetch the default state until after the component has mounted on the client,
-    //this is so that the initial state is consistent between ssr and csr :)
-    //otherwise we could use suppressHydrationWarning on the page component
-    const [calculatorState, setCalculatorState] = useState(calculatorDefaultState);
+    //this is so that the initial state is consistent between ssr and csr :) - passing true into the function will ensure
+    //we get a ssr / hydration safe value :)
+    
+    const [calculatorState, setCalculatorState] = useState(getInitialCalculatorState(true));
     const [trueTargetAmount, setTrueTargetAmount] = useState(calcTargetAmount(calculatorState));
     const [retirementAge, setRetirementAge] = useState(calcRetirementAge(calculatorState));
 
-    //Use layout effect will run before the initial render has committed to dom / painted to dom
     //we always want to fetch this data whenever this page component is mounted
     //and we also want to set the state to storage whenever this component is mounted
     useEffect( () => setCalculatorState(getInitialCalculatorState()), []);
@@ -37,10 +37,14 @@ function RetirementCalculator(){
         setCalculatorState({...calculatorState, [name]:value});
         setStateToStorage('calculatorState', {...calculatorState, [name]:value});
     };
+
     const currencyFormatter = formatter('en-US','USD');
 
     return <div>
-        <h2>Retirement Calculator</h2>
+        <Seo title={'useState example :) - Retirement Calculator'} />
+        <h1>Retirement Calculator</h1>
+        <p>Calculate your retirement age and retirement amount :)</p>
+        <Link href='/reducer'><a><h2>This version uses the useState hook :) - click here to use the reducer based version</h2></a></Link>
         <div>
             <h3>You can retire at {retirementAge}</h3>
             <p>Target retirement amount: {currencyFormatter.format(trueTargetAmount)}</p>
