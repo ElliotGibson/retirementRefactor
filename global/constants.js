@@ -10,3 +10,13 @@ export const calculatorDefaultState = {
     postRetROR: 7,
     inflation: 2.9
 }
+
+export const defaultSeo = {
+    description:'A refactorred retirement calculator for u/Ghix - refactor by E Gibson',
+    keywords:'Retirement, Calculator, useReducer, useState, retirement amount, retirement',
+    canonical:'http://localhost:3000/',
+    title:'Retirement Calculator Refactor',
+    preventIndexing:false,
+    favicon: '/favicon.ico',
+    shareImage:'/vercel.svg'
+}
