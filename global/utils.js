@@ -1,5 +1,5 @@
 export function getStateFromStorage(localStorageKey){
-    return window?.localStorage && JSON.parse(window?.localStorage?.getItem(localStorageKey));
+    return typeof window !== 'undefined' && JSON.parse(window?.localStorage?.getItem(localStorageKey));
 }
 
 export function setStateToStorage(localStorageKey, state){
