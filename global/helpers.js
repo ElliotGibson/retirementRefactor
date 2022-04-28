@@ -2,8 +2,8 @@ import { getStateFromStorage } from "./utils";
 import { calculatorDefaultState } from "./constants";
 
 //Get the initial calculator state and fallback to the constants if not available;
-export function getInitialCalculatorState(){
-    return getStateFromStorage('calculatorState') || calculatorDefaultState;
+export function getInitialCalculatorState(ssrSafe){
+    return ( !ssrSafe && getStateFromStorage('calculatorState')) || calculatorDefaultState;
 }
 
 //A general function which can be used to calculate pre and post ror after inflation - if the calc === 0 then it will fallback to 0.00001 as 0 is considered falsy :)
